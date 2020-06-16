@@ -48,3 +48,6 @@ app.use("/product", productRoutes);
 app.listen(PORT, () => {
   console.log(`App is running on ${PORT}`);
 });
+
+
+console.log(process.env);

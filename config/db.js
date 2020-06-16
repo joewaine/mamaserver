@@ -1,5 +1,5 @@
 module.exports = {
-  // database: process.env.MONGODB_URI || "mongodb://localhost:27017/authapp",
-  database: process.env.MONGODB_URI,
+  database: "mongodb+srv://joe:MontBlanc7098!!@cluster0-9hdl4.mongodb.net/test?retryWrites=true&w=majority",
+  // database: process.env.MONGODB_URI,
   secret: "password"
 };
