@@ -30,10 +30,13 @@ mongoose
 
 
 // app.use(cors());
+var corsOptions = {
+  origin: true,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 
-
-app.use(cors());
+app.use(cors(corsOptions));
 
 //configure body parser
 app.use(bodyParser.urlencoded({ extended: false }));
