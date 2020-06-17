@@ -3,6 +3,9 @@ const PORT = process.env.PORT || 4000;
 const morgan = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+
+require('dotenv').config();
+
 const mongoose = require("mongoose");
 const config = require("./config/db");
 
@@ -10,6 +13,9 @@ const app = express();
 
 //configure database and mongoose
 mongoose.set("useCreateIndex", true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useUnifiedTopology', true);
+
 mongoose
   .connect(config.database, { useNewUrlParser: true })
   .then(() => {
@@ -22,13 +28,7 @@ mongoose
 //registering cors
 app.use(cors());
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", '*');
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-  next();
-});
+
 
 //configure body parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -59,4 +59,4 @@ app.listen(PORT, () => {
 });
 
 
-console.log(process.env);
+console.log(process.env)
