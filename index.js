@@ -4,6 +4,14 @@ const morgan = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
+
+
+const corsOptions = {
+  origin: 'http://localhost:8080/'
+}
+
+
+
 require('dotenv').config();
 
 const mongoose = require("mongoose");
@@ -28,36 +36,7 @@ mongoose
 //registering cors
 
 
-// var corsOptions = {
-//   origin: 'http://example.com',
-//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// }
-
-
-// var whitelist = ['https://sheltered-shore-34206.herokuapp.com/', 'https://determined-allen-f1662e.netlify.app/']
-// var corsOptions = {
-//   origin: function (origin, callback) {
-//     if (whitelist.indexOf(origin) !== -1) {
-//       callback(null, true)
-//     } else {
-//       callback(new Error('Not allowed by CORS'))
-//     }
-//   }
-// }
- 
-
-let corsOptions = { origin: '*' }
-
-// app.use(cors(corsOptions));
-// // app.options('*', cors())
-
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8080/"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
+app.use(cors());
 
 //configure body parser
 app.use(bodyParser.urlencoded({ extended: false }));
