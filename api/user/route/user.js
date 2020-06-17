@@ -6,12 +6,12 @@ const userController = require("../controller/userController");
 var cors = require('cors')
 
 
-router.post("/register", cors(), userController.registerNewUser);
-router.post("/login", cors(), userController.loginUser);
+router.post("/register", userController.registerNewUser);
+router.post("/login", userController.loginUser);
 
-router.post("/addproduct", cors(), userController.addProduct);
+router.post("/addproduct", userController.addProduct);
 
-router.get('/:id', cors(), userController.getUserProducts);
+router.get('/:id', userController.getUserProducts);
       
 
 module.exports = router;

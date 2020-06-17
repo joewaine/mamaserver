@@ -36,6 +36,12 @@ mongoose
 //registering cors
 
 
+// 'https://sheltered-shore-34206.herokuapp.com/user/login'
+var corsOptions = {
+  origin: 'https://sheltered-shore-34206.herokuapp.com/',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 app.use(cors());
 
 //configure body parser
