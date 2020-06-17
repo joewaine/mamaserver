@@ -41,7 +41,8 @@ app.use(morgan("dev")); // configire morgan
 // define first route
 app.get("/", (req, res) => {
 
- res.send(JSON.stringify({ Hello: 'mean solider'}));
+  // res.send(JSON.stringify(cors(){ Hello: 'mean solider'}));
+  res.send(JSON.stringify(cors()));
   console.log("Hello MEVN Soldier your update");
   console.log(cors());
 });
