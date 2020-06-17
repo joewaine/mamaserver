@@ -4,14 +4,6 @@ const morgan = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-
-
-const corsOptions = {
-  origin: 'http://localhost:8080/'
-}
-
-
-
 require('dotenv').config();
 
 const mongoose = require("mongoose");
@@ -36,13 +28,8 @@ mongoose
 //registering cors
 
 
-// 'https://sheltered-shore-34206.herokuapp.com/user/login'
-var corsOptions = {
-  origin: 'https://sheltered-shore-34206.herokuapp.com/',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 //configure body parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -55,7 +42,8 @@ app.use(morgan("dev")); // configire morgan
 app.get("/", (req, res) => {
 
  res.send(JSON.stringify({ Hello: 'mevn solider'}));
-  console.log("Hello MEVN Soldier");
+  console.log("Hello MEVN Soldier your update");
+  console.log(cors());
 });
 
 const userRoutes = require("./api/user/route/user"); //bring in our user routes
