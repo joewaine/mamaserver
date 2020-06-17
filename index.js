@@ -33,7 +33,20 @@ mongoose
 //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 // }
 
-app.use(cors({origin: true, optionsSuccessStatus: 200}));
+
+var whitelist = ['https://sheltered-shore-34206.herokuapp.com/', 'https://determined-allen-f1662e.netlify.app/']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+ 
+
+app.use(cors(corsOptions));
 // app.options('*', cors())
 
 
