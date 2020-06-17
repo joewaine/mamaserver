@@ -26,8 +26,15 @@ mongoose
   });
 // db configuaration ends here
 //registering cors
-app.use(cors());
 
+
+// var corsOptions = {
+//   origin: 'http://example.com',
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
+
+app.use(cors({origin: true, optionsSuccessStatus: 200}));
+// app.options('*', cors())
 
 
 //configure body parser
