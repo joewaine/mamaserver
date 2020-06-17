@@ -29,7 +29,7 @@ mongoose
 
 
 
-app.use(cors());
+app.use(cors({credentials: true, origin: true}));
 
 //configure body parser
 app.use(bodyParser.urlencoded({ extended: false }));

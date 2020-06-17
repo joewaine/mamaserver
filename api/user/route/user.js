@@ -5,7 +5,7 @@ const userController = require("../controller/userController");
 const cors = require("cors");
 
 
-router.all('*', cors());
+router.all('*', cors({credentials: true, origin: true}));
 router.post("/register", userController.registerNewUser);
 router.post("/login", userController.loginUser);
 router.post("/addproduct", userController.addProduct);
