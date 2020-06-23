@@ -71,7 +71,7 @@ userSchema.statics.findByUserId = async (id) => {
   if(!user) {
     throw new Error({ error: "Invalid id" });
   }
-  console.log(user)
+  // console.log(user)
   return user
 }
 

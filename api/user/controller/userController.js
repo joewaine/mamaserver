@@ -61,7 +61,7 @@ exports.loginUser = async (req, res) => {
 exports.getUserProducts = async (req, res) => {
  try {
   const user = await User.findByUserId(req.params.id)
-    console.log(user)
+    // console.log(user)
     res.status(201).json({ user });
   } catch (err) {
     res.status(400).json({ err: err });

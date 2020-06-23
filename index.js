@@ -3,8 +3,10 @@ const PORT = process.env.PORT || 4000;
 const morgan = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
+const fetch = require("node-fetch");
+const btoa = require('btoa');
 require('dotenv').config();
+
 
 const mongoose = require("mongoose");
 const config = require("./config/db");
@@ -26,54 +28,55 @@ mongoose
   });
 // db configuaration ends here
 //registering cors
-
-
-
-// app.use(cors());
 var corsOptions = {
   origin: true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-
-
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:8080"); // update to match the domain you will make the request from
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
-
 app.use(cors(corsOptions));
 
-//configure body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//configure body-parser ends here
 
 app.use(morgan("dev")); // configire morgan
 
-// define first route
 app.get("/", (req, res) => {
 
   res.send(JSON.stringify({ Hello: 'medddaeeen solider'}));
-  // res.send(JSON.stringify(cors()));
-  console.log("Hello MEVN Soldier your update");
-  console.log(cors());
+
+
 });
 
 const userRoutes = require("./api/user/route/user"); //bring in our user routes
 app.use("/user", userRoutes);
 
-
 const productRoutes = require("./api/product/route/product"); //bring in our product routes
 app.use("/product", productRoutes);
-
-
-
 
 app.listen(PORT, () => {
   console.log(`App is running on ${PORT}`);
 });
+// let getProducts = async function () {
+// console.log(12345)
+//   const response = await fetch(
+//     'https://app.snipcart.com/api/products', {
+//     method: 'GET',
+//     headers: {
+//       'Authorization': 'Bearer S_OTY0NzY5YjEtYjAxNy00YWNiLTkzMDAtNWMxYjQ3YjQ5YmY0NjM3MjgxMTUxMjMyMDY3ODE2',
+//       // 'Authorization': 'ZWMzNjdjM2MtOTQyNi00MjU2LTgwZjMtMzlhNmFiZDMwNDBlNjM3MjYyOTQ3OTQ3OTcxNTA1',
+//       // 'Authorization': 'Bearer ST_ZTBmZWRlMjAtMjBlOC00OGU5LWJlMTItZmIwMTNiZDc2Mzc0NjM3MjczNDc1MDcxNTcyODk5',
+//       'Accept': 'application/json'
+//     }
+//   });
+// console.log(response)
+//   if (response.ok) {
+//     const body = await response.json();
+// console.log(body)
+//     return {
+//       statusCode: 200,
+//       body: JSON.stringify({ ok: true, returnUrl: body.returnUrl })
+//     };
+//   }
+// }
 
 
-console.log(process.env)
