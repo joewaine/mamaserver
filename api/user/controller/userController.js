@@ -41,6 +41,7 @@ exports.addProduct = async (req, res) => {
 };
 
 exports.loginUser = async (req, res) => {
+  console.log(req)
   try {
     const email = req.body.email;
     const password = req.body.password;
