@@ -29,7 +29,9 @@ mongoose
 // db configuaration ends here
 //registering cors
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://nadimama.com/'
+}));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
