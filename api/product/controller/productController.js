@@ -114,9 +114,9 @@ try {
   if (request.ok) {
     const body = await request.json();
     res.status(201).json({ body });
-    console.log(body)
+    // console.log(body)
   }
-console.log('success');
+// console.log('success');
 
 } catch (err) {
  res.status(400).json({ err: err });

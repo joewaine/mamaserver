@@ -3,7 +3,7 @@ const User = require("../model/User");
 exports.registerNewUser = async (req, res) => {
   try {
     let isUser = await User.find({ email: req.body.email });
-    console.log(isUser);
+    // console.log(isUser);
     if (isUser.length >= 1) {
       return res.status(409).json({
         message: "email already in use"
@@ -34,14 +34,15 @@ exports.addProduct = async (req, res) => {
       let data = await user.save();
       const token = await user.generateAuthToken(); // here it is calling the method that we created in the model
     res.status(201).json({ user, token });
-    console.log(user)
+    // console.log(user)
   } catch (err) {
     res.status(400).json({ err: err });
   }
 };
 
 exports.loginUser = async (req, res) => {
-  console.log(req)
+  // console.log(123)
+  // console.log(req.body)
   try {
     const email = req.body.email;
     const password = req.body.password;
@@ -52,6 +53,7 @@ exports.loginUser = async (req, res) => {
         .json({ error: "Login failed! Check authentication credentials" });
     }
     const token = await user.generateAuthToken();
+    console.log(res)
     res.status(201).json({ user, token });
   } catch (err) {
     res.status(400).json({ err: err });
