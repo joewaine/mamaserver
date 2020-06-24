@@ -30,7 +30,7 @@ mongoose
 //registering cors
 
 app.use(cors({
-  origin: 'https://nadimama.com'
+  origin: 'https://www.nadimama.com'
 }));
 
 app.use(bodyParser.urlencoded({ extended: false }));
